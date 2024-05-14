@@ -1,52 +1,38 @@
-import './App.css';
-import 'react-toastify/dist/ReactToastify.css';
-import Login from './paginas/login/Login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-import { ToastContainer } from 'react-toastify';
-import Cadastro from './paginas/cadastro/Cadastro';
-import Navbar from './components/navBar/NavBar';
-import Home from './paginas/home/Home';
-import Footer from './components/footer/Footer';
-import ListaTemas from './components/temas/listaTemas/ListaTemas';
-import FormularioTema from './components/temas/formularioTema/FormularioTema';
-import DeletarTema from './components/temas/deletarTema/DeletarTema';
-import ListaPostagens from './components/postagens/listaPostagens/ListaPostagens';
-import FormularioPostagem from './components/postagens/formularioPostagem/FormularioPostagem';
-
-import Perfil from './paginas/perfil/Perfil';
-import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  
+  const [count, setCount] = useState(0)
+
   return (
     <>
-      <AuthProvider>
-      <ToastContainer />
-        <BrowserRouter>
-        <Navbar />
-          <div className='min-h-[80vh]'>
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/cadastro" element={<Cadastro />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/temas" element={<ListaTemas />} />
-              <Route path="/cadastroTema" element={<FormularioTema />} />
-              <Route path="/editarTema/:id" element={<FormularioTema />} />
-              <Route path="/deletarTema/:id" element={<DeletarTema />} />
-              <Route path="/postagens" element={<ListaPostagens />} />
-              <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
-              <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
-              <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
-              <Route path="/perfil" element={<Perfil />} />
-            </Routes>
-          </div>
-          <Footer />
-        </BrowserRouter>
-      </AuthProvider>
+
+<div className="home">
+      <h1>Meu Blog Pessoal</h1>
+      <div className="blog-post">
+        <h2>Título do Post</h2>
+        <p>Conteúdo do post aqui...</p>
+      </div>
+      <div className="blog-post">
+        <h2>Outro Título de Post</h2>
+        <p>Conteúdo do outro post...</p>
+      </div>
+      <div className="card">
+        <button onClick={() => setCount(count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edite seus posts e salve para ver as alterações
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Clique nos posts para ler mais
+      </p>
+    </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
